@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:25:19 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/19 18:24:10 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/19 19:12:53 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void	init_player(t_player *player, t_map *map)
 	player->u_d = 0;
 	player->fov = (FOV * M_PI / 180);
 	if (dir == 'N')
-		player->angle = 3 * M_PI / 2;
-	if (dir == 'S')
 		player->angle = M_PI / 2;
+	if (dir == 'S')
+		player->angle = M_PI + (M_PI / 2);
 	if (dir == 'E')
 		player->angle = 0;
 	if (dir == 'W')

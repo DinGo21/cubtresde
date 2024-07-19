@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:16:04 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/19 18:43:53 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/19 19:21:23 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define M_PI 3.14159265358979323846
-# define S_WIDTH 1512 // Screen width
-# define S_HEIGHT 1024 // Screen height
+# define S_WIDTH 1920 // Screen width
+# define S_HEIGHT 1080 // Screen height
 # define TILE_SIZE 64 // Tile size
 # define FOV 60
 # define ANG 20
@@ -62,7 +62,7 @@ typedef struct s_player
 	// double	dir_y;
 	// double	plan_x;
 	// double	plan_y;
-	double	angle;
+	float	angle;
 	double	fov;
 	float		x;
 	float		y;
@@ -194,7 +194,7 @@ t_point	dist_left(t_mlx *data, float py, float px, float ang);
 
 void	render_wall(t_mlx *data, t_player *ply, t_ray *ray, int x);
 void	draw_wall(t_mlx *data, t_ray *ray, int x);
-void 	draw_floor_ceiling(t_mlx *data, t_ray *ray, int x):
+void 	draw_floor_ceiling(t_mlx *data, t_ray *ray, int x);
 
 // utils //
 

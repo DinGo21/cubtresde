@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   updown.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 17:29:28 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/19 18:25:07 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/19 18:47:26 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_point	dist_up(t_mlx *data, float py, float px, float ang)
 	int	y;
 	t_point end;
 
+	end.h = 0;
 	x = (px) / TILE_SIZE;
 	auxy = py;
 	y = (py - 1) / TILE_SIZE;
@@ -67,6 +68,7 @@ t_point	dist_down(t_mlx *data, float py, float px, float ang)
 	int	y;
 	t_point end;
 
+	end.h = 0;
 	x = (px) / TILE_SIZE;
 	auxy = py;
 	y = (py) / TILE_SIZE;

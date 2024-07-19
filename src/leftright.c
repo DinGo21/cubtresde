@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   leftright.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 17:28:29 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/19 18:25:01 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/19 18:46:57 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_point	dist_right(t_mlx *data, float py, float px, float ang)
 	int	y;
 	t_point end;
 
+	end.h = 0;
 	x = px / TILE_SIZE;
 	auxx = px;
 	y = py / TILE_SIZE;
@@ -65,6 +66,7 @@ t_point	dist_left(t_mlx *data, float py, float px, float ang)
 	int	y;
 	t_point end;
 
+	end.h = 0;
 	x = (px - 1) / TILE_SIZE;
 	auxx = px;
 	y = py / TILE_SIZE;
