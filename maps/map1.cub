@@ -1,0 +1,16 @@
+NO ./sprites/Mona_Lisa.png
+SO ./sprites/Wheat_Field.png
+WE ./sprites/Impression_Sunrise.png
+EA ./sprites/Sunflowers.png
+
+F 220,100,0
+C 225,100,0
+
+1111111111
+1010000001
+1010000001
+101000E001
+1000000001
+1000010001
+1000000001
+1111111111
