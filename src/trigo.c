@@ -6,11 +6,11 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 18:17:27 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/19 18:17:46 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/19 18:31:49 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/cub3D.h"
+#include "cub3D.h"
 
 float	rads(float x)
 {

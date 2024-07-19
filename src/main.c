@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:04:09 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/17 14:29:39 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/19 18:35:52 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ static void	get_args(t_mlx *data, char *filename)
 void	game_loop(void *param)
 {
 	t_mlx *data;
-	t_ray ray;
 
 	data = param;
-	raycast(data, &ray, data->player);
+	drawang(data);
 }
 
 void	start_game(t_mlx *data)

@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:16:04 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/19 18:12:48 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/19 18:43:53 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ typedef struct s_player
 	// double	plan_y;
 	double	angle;
 	double	fov;
-	int		x;
-	int		y;
+	float		x;
+	float		y;
 	int		l_r;
 	int		u_d;
 }	t_player;
@@ -159,8 +159,6 @@ typedef struct s_mlx
 	mlx_image_t		*img;
 	mlx_texture_t	*textures[4];
 	t_map			*map;
-	int				height;
-	int				width;
 	float			angle;
 	t_player		*player;
 }	t_mlx;
@@ -180,6 +178,7 @@ void	check_map(t_mlx *data, t_map *map);
 // raycast //
 
 void	raycast(t_mlx *data, t_ray *ray, t_player *player);
+void	drawang(t_mlx *data);
 
 	//updown
 t_point	if_updown(t_mlx *data, t_point end, int x, float ang);
@@ -195,6 +194,7 @@ t_point	dist_left(t_mlx *data, float py, float px, float ang);
 
 void	render_wall(t_mlx *data, t_player *ply, t_ray *ray, int x);
 void	draw_wall(t_mlx *data, t_ray *ray, int x);
+void 	draw_floor_ceiling(t_mlx *data, t_ray *ray, int x):
 
 // utils //
 
@@ -209,6 +209,12 @@ int		unit_circle(float angle, char c);
 
 void	ft_error(char *err_message);
 void	mlx_error(t_mlx *data, char *err_mesage);
+
+//trigo
+float	rads(float x);
+float	catopo(float ady, float ang);
+float	catady(float opo, float ang);
+float	hipo(float y, float x);
 
 // frees //
 
