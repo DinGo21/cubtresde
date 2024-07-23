@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:41:30 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/19 16:43:11 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/23 17:29:20 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ void	draw_wall(t_mlx *data, t_ray *ray, int x)
 	tex_y = (ray->drawstart - S_HEIGHT / 2 + ray->lineheight / 
 		2) * step;
 	draw_floor_ceiling(data, ray, x);
-	while (ray->drawstart - ray->drawend)
+	while (ray->drawstart < ray->drawend)
 	{
 		mlx_put_pixel(data->img, x, ray->drawstart, 
 			get_color(arr[(int)tex_y * txtr->width + (int)tex_x]));

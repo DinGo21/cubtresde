@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:25:19 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/19 19:12:53 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:34:27 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ void	init_player(t_player *player, t_map *map)
 	char	dir;
 
 	dir = map->map2d[map->plyr_y][map->plyr_x];
-	// player->x = map->plyr_x;
-	// player->y = map->plyr_y;
 	player->x = (map->plyr_x * TILE_SIZE) + TILE_SIZE / 2;
 	player->y = (map->plyr_y * TILE_SIZE) + TILE_SIZE / 2;
 	player->l_r = 0;
@@ -121,5 +119,4 @@ void	init_data(t_mlx *data)
 	data->map->txtr[SO] = NULL;
 	data->map->txtr[WE] = NULL;
 	data->map->txtr[EA] = NULL;
-	data->angle = rads(ANG);
 }

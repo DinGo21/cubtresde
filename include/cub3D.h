@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:16:04 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/19 19:21:23 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/07/23 17:58:20 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define S_HEIGHT 1080 // Screen height
 # define TILE_SIZE 64 // Tile size
 # define FOV 60
-# define ANG 20
+# define ANG 60
 # define ROTATION_SPEED 0.045 // Rotation speed
 # define PLAYER_SPEED 4 // Player speed
 
@@ -62,10 +62,10 @@ typedef struct s_player
 	// double	dir_y;
 	// double	plan_x;
 	// double	plan_y;
-	float	angle;
 	double	fov;
-	float		x;
-	float		y;
+	float	angle;
+	float	x;
+	float	y;
 	int		l_r;
 	int		u_d;
 }	t_player;
@@ -159,7 +159,7 @@ typedef struct s_mlx
 	mlx_image_t		*img;
 	mlx_texture_t	*textures[4];
 	t_map			*map;
-	float			angle;
+	int				x;
 	t_player		*player;
 }	t_mlx;
 
