@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:04:09 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/22 17:28:48 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/24 17:02:50 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,13 @@ static void	get_args(t_mlx *data, char *filename)
 void	game_loop(void *param)
 {
 	t_mlx	*data;
-	// t_ray	ray;
 
 	data = param;
-	// raycast(data, &ray, data->player);
 	drawang(data);
 }
 
 void	start_game(t_mlx *data)
 {
-	// t_ray ray;
 	data->mlx = mlx_init(S_WIDTH, S_HEIGHT, "cuBit3D", true);
 	if (!data->mlx)
 	{
@@ -52,7 +49,6 @@ void	start_game(t_mlx *data)
 	data->img = mlx_new_image(data->mlx, S_WIDTH, S_HEIGHT);
 	mlx_image_to_window(data->mlx, data->img, 0, 0);
 	mlx_loop_hook(data->mlx, &game_loop, data);
-	// raycast(data, &ray, data->player);
 	mlx_loop(data->mlx);
 }
 

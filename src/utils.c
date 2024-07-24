@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:39:56 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/17 13:39:28 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/24 16:31:30 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,30 +74,3 @@ char	*ft_join(char *s1, char *s2)
 	return (free(s1), str);
 }
 
-float	normalize_angle(float angle)
-{
-	if (angle < 0)
-	{
-		angle += (2 * M_PI);
-	}
-	if (angle > (2 * M_PI))
-	{
-		angle -= (2 * M_PI);
-	}
-	return (angle);
-}
-
-int	unit_circle(float angle, char c)
-{
-	if (c == 'x')
-	{
-		if (angle > 0 && angle < M_PI)
-		return (1);
-	}
-	else if (c == 'y')
-	{
-		if (angle > (M_PI / 2) && angle < (3 * M_PI) / 2)
-		return (1);
-	}
-	return (0);
-}

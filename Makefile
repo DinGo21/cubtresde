@@ -24,7 +24,6 @@ LIBS := -ldl -lglfw -pthread -lm
 
 all: obj $(NAME)
 
-
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 

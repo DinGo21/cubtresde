@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 17:23:31 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/23 18:37:18 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/24 17:03:34 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 // 		<< 8 | img->pixels[p + 3];
 // 	return (c);
 // }
+
 /*  void	drawtexture(t_map *data, t_point init, t_point end, t_point p, float aux)
  {
 	float i;
@@ -60,11 +61,6 @@
 		init.y = init.y + i;
 	}
  } */
-
-/* int	drawpart(t_map *data, t_point init, t_point end, t_point p, float aux)
-{
-	
-} */
 
 /* void	drawtexture(t_mlx *data, t_point init, t_point end, t_point p, float aux)
 {
@@ -154,23 +150,25 @@
 // 	}
 // }
 
-void	draw_background(t_mlx *data)
+void	draw_background(t_mlx *data, char **cc, char **ff)
 {
-	int x = 0;
-	int y = 0;
+	int x;
+	int y;
 
+	x = 0;
+	y = 0;
 	while (y <= (S_HEIGHT) / 2)
 	{
 		x = -1;
 		while (++x < S_WIDTH)
-			mlx_put_pixel(data->img, x, y, 0x6cffebFF);
+			mlx_put_pixel(data->img, x, y, convert_rgb(cc));
 		y++;
 	}
 	while (y > (S_HEIGHT) / 2 && y < S_HEIGHT)
 	{
 		x = -1;
 		while (++x < S_WIDTH)
-			mlx_put_pixel(data->img, x, y, 0x13DA1FFF);
+			mlx_put_pixel(data->img, x, y, convert_rgb(ff));
 		y++;
 	}
 }
@@ -199,12 +197,29 @@ void	draw(t_mlx *data, t_point end, t_player *begin, int color)
 	}
 }
 
-void draw2(t_mlx *data, int drawstart, int drawend, int color)
+void draw2(t_mlx *data, t_ray *ray, mlx_texture_t *txtr)
 {
-	while (drawstart < drawend)
+	uint32_t	*pixels;
+	double		tex_x;
+	double		tex_y;
+	double		step;
+
+	pixels = (uint32_t *)txtr->pixels;
+	if (ray->flag == 1)
+		tex_x = fmodf((ray->h.y * (txtr->width / TILE_SIZE)),
+			txtr->width);
+	else
+		tex_x = fmodf((ray->v.x * (txtr->width / TILE_SIZE)),
+			txtr->width);
+	step = 1.0 * txtr->height / ray->lineheight;
+	tex_y = (ray->drawstart - S_HEIGHT / 2 + ray->lineheight / 
+		2) * step;
+	while (ray->drawstart < ray->drawend)
 	{
-		mlx_put_pixel(data->img, data->x, drawstart, color);
-		drawstart++;
+		mlx_put_pixel(data->img, data->x, ray->drawstart, get_pixel(
+			pixels[(int)tex_y * txtr->width + (int)tex_x]));
+		tex_y += step;
+		ray->drawstart++;
 	}
 }
 
@@ -220,57 +235,58 @@ void	drawlines(t_mlx *data, t_point h)
 		draw(data, h, data->player, CGRN);
 }
 
-void	draw3d(t_mlx *data, t_point p, int ray, float angle)
+void	draw3d(t_mlx *data, t_ray *ray, float angle)
 {
-	int		drawstart;
-	int		drawend;
-	int		lineheight;
+	t_point	*p;
 
-	p.h *= cos(angle - data->player->angle);
-	lineheight = (TILE_SIZE / p.h) * ((S_WIDTH / 2) / 
+	if (ray->flag == 0)
+		p = &ray->v;
+	else
+		p = &ray->h;	
+	ray->distance *= cos(angle - data->player->angle);
+	ray->lineheight = (TILE_SIZE / ray->distance) * ((S_WIDTH / 2) / 
 		tan(data->player->fov / 2));
-	drawstart = S_HEIGHT / 2 - lineheight / 2;
-	drawend = S_HEIGHT / 2 + lineheight / 2;
-	data->x = ray;
-	if (drawstart < 0)
-		drawstart = 0;
-	if (drawend > S_HEIGHT)
-		drawend = S_HEIGHT;
-	if (p.dir == 'U')
-		draw2(data, drawstart, drawend, CWHI);
-	if (p.dir == 'D')
-		draw2(data, drawstart, drawend, CCIA);
-	if (p.dir == 'R')
-		draw2(data, drawstart, drawend, CRED);
-	if (p.dir == 'L')
-		draw2(data, drawstart, drawend, CGRN);
+	ray->drawstart = S_HEIGHT / 2 - ray->lineheight / 2;
+	ray->drawend = S_HEIGHT / 2 + ray->lineheight / 2;
+	if (ray->drawstart < 0)
+		ray->drawstart = 0;
+	if (ray->drawend > S_HEIGHT)
+		ray->drawend = S_HEIGHT;
+	if (p->dir == 'U')
+		draw2(data, ray, data->textures[NO]);
+	if (p->dir == 'D')
+		draw2(data, ray, data->textures[SO]);
+	if (p->dir == 'R')
+		draw2(data, ray, data->textures[EA]);
+	if (p->dir == 'L')
+		draw2(data, ray, data->textures[WE]);
 }
 
-void	choose_line(t_mlx *data, float ang, int ray)
+void	choose_line(t_mlx *data, t_player *player, float ang)
 {
-	t_point	v;
-	t_point	h;
-	float	py;
-	float	px;
+	t_ray	ray;
+	float	v_inter;
+	float	h_inter;
 
-	py = data->player->y;
-	px = data->player->x;
-	h.dir = 'A';
-	v.dir = 'A';
+	ray.flag = 0;
 	if ((ang >= 0 && ang <= (M_PI / 2)) || (ang > M_PI + (M_PI / 2) && ang < 2 * M_PI))
-		h = dist_right(data, py, px, ang);
+		ray.h = dist_right(data, player->y, player->x, ang);
 	if (ang > (M_PI / 2) && ang <= M_PI + (M_PI / 2))
-		h = dist_left(data, py, px, ang);
+		ray.h = dist_left(data, player->y, player->x, ang);
 	if (ang > 0 && ang < M_PI)	
-		v = dist_up(data, py, px, ang);
+		ray.v = dist_up(data, player->y, player->x, ang);
 	if (ang >= M_PI && ang < 2 * M_PI)
-		v = dist_down(data, py, px, ang);
-	h.h = hipo(data->player->y - h.y, data->player->x - h.x);
-	v.h = hipo(data->player->y - v.y, data->player->x - v.x);
-	if (v.h < h.h)
-		h = v;
-	draw3d(data, h, ray, ang);
-	// drawlines(data, h);
+		ray.v = dist_down(data, player->y, player->x, ang);
+	h_inter = hipo(player->y - ray.h.y, player->x - ray.h.x);
+	v_inter = hipo(player->y - ray.v.y, player->x - ray.v.x);
+	if (v_inter < h_inter)
+		ray.distance = v_inter;
+	else
+	{
+		ray.distance = h_inter;
+		ray.flag = 1;
+	}
+	draw3d(data, &ray, ang);
 }
 
 
@@ -285,16 +301,17 @@ void	drawang(t_mlx *data)
 	ang = data->player->angle + (data->player->fov / 2);
 	count = data->player->angle + (data->player->fov / 2);
 	totang = data->player->fov / S_WIDTH;
-	draw_background(data);
+	draw_background(data, data->map->cc, data->map->ff);
 	while (rays <= S_WIDTH)
 	{
 		if (ang >= 2 * M_PI)
 			ang = ang - (2 * M_PI);
 		if (ang < 0)
 			ang = (2 * M_PI) + ang;
-		choose_line(data, ang, rays);
+		data->x = rays;
+		choose_line(data, data->player, ang);
 		ang = ang - totang;
 		count = count - totang;
-		rays = rays + 1;
+		rays++;
 	}
 }

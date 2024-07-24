@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   updown.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 17:29:28 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/19 18:47:26 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/07/24 16:42:17 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ t_point	if_updown(t_mlx *data, t_point end, int x, float ang)
 
 t_point	dist_up(t_mlx *data, float py, float px, float ang)
 {
-	int	x;
-	int	auxy;
-	int	y;
-	t_point end;
+	int		x;
+	int		y;
+	int		auxy;
+	t_point	end;
 
 	end.h = 0;
 	x = (px) / TILE_SIZE;
@@ -51,11 +51,11 @@ t_point	dist_up(t_mlx *data, float py, float px, float ang)
 		puts("es 1"); */
 	if (end.x <= 0 || x >= data->map->w_map - 1)
 		return (if_updown(data, end, x, ang));
-	//if ((int)(end.x) % TILE_SIZE == 0 && (int)end.y % TILE_SIZE == 0 && ang > (PI / 2))
-	{
-		//if (data->map[y - 1][x - 1] == '1' && data->map[y][x -1] != '1')
-			//return (end);
-	}
+	// if ((int)(end.x) % TILE_SIZE == 0 && (int)end.y % TILE_SIZE == 0 && ang > (PI / 2))
+	// {
+	// 	if (data->map[y - 1][x - 1] == '1' && data->map[y][x -1] != '1')
+	// 		return (end);
+	// }
 	if (data->map->map2d[y - 1][x] != '1')
 		return (dist_up(data, end.y , end.x, ang));
 	return (end);
@@ -63,9 +63,9 @@ t_point	dist_up(t_mlx *data, float py, float px, float ang)
 
 t_point	dist_down(t_mlx *data, float py, float px, float ang)
 {
-	int	x;
-	int	auxy;
-	int	y;
+	int		x;
+	int		y;
+	int		auxy;
 	t_point end;
 
 	end.h = 0;

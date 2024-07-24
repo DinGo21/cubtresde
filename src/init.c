@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:25:19 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/23 18:34:27 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/24 16:27:56 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,42 +33,6 @@ int	load_textures(t_mlx *data, t_map *map)
 	return (0);
 }
 
-// void	init_dir1(t_player *player, char dir)
-// {
-// 	if (dir == 'N')
-// 	{
-// 		player->dir_x = 0;
-// 		player->dir_y = -1;
-// 		player->plan_x = 0.66;
-// 		player->plan_y = 0; 
-// 	}
-// 	if (dir == 'S')
-// 	{
-// 		player->dir_x = 0;
-// 		player->dir_y = 1;
-// 		player->plan_x = -0.66;
-// 		player->plan_y = 0; 
-// 	}
-// }
-
-// void	init_dir2(t_player *player, char dir)
-// {
-// 	if (dir == 'E')
-// 	{
-// 		player->dir_x = 1;
-// 		player->dir_y = 0;
-// 		player->plan_x = 0;
-// 		player->plan_y = 0.66; 
-// 	}
-// 	if (dir == 'W')
-// 	{
-// 		player->dir_x = -1;
-// 		player->dir_y = 0;
-// 		player->plan_x = 0;
-// 		player->plan_y = -0.66; 
-// 	}
-// }
-
 void	init_player(t_player *player, t_map *map)
 {
 	char	dir;
@@ -87,10 +51,6 @@ void	init_player(t_player *player, t_map *map)
 		player->angle = 0;
 	if (dir == 'W')
 		player->angle = M_PI;
-	// if (dir == 'N' || dir == 'S')
-	// 	init_dir1(player, dir);
-	// else
-	// 	init_dir2(player, dir);
 }
 
 
@@ -108,7 +68,6 @@ void	init_data(t_mlx *data)
 	data->textures[EA] = NULL;
 	data->map->w_map = 0;
 	data->map->h_map = 0;
-	data->map->s_map = 0;
 	data->map->plyr_x = 0;
 	data->map->plyr_y = 0;
 	data->map->count = 0;

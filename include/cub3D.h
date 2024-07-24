@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:16:04 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/23 17:58:20 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/24 16:37:19 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # define S_HEIGHT 1080 // Screen height
 # define TILE_SIZE 64 // Tile size
 # define FOV 60
-# define ANG 60
 # define ROTATION_SPEED 0.045 // Rotation speed
 # define PLAYER_SPEED 4 // Player speed
 
@@ -88,30 +87,12 @@ typedef	struct	s_point
 */
 typedef struct s_ray
 {
-	// double	camera_x;
-	// double	delta_x;
-	// double	delta_y;
-	// double	side_x;
-	// double	side_y;
-	// double	raydir_x;
-	// double	raydir_y;
-	// double	wall_dist;
-	// int		lineheight;
-	// int		wall_x;
-	// int		map_x;
-	// int		map_y;
-	// int		step_x;
-	// int		step_y;
-	// int		side;
+	t_point	h;
+	t_point	v;
 	int		flag;
 	int		drawstart;
 	int		drawend;
 	int		lineheight;
-	double	v_x;
-	double	v_y;
-	double	h_x;
-	double	h_y;
-	double	angle;
 	double	distance;
 }	t_ray;
 
@@ -134,7 +115,6 @@ typedef struct s_map
 	char	**map2d;
 	int		w_map;
 	int		h_map;
-	int		s_map;
 	int		plyr_x;
 	int		plyr_y;
 	char	**ff;
@@ -159,8 +139,8 @@ typedef struct s_mlx
 	mlx_image_t		*img;
 	mlx_texture_t	*textures[4];
 	t_map			*map;
-	int				x;
 	t_player		*player;
+	int				x;
 }	t_mlx;
 
 // init //
@@ -177,7 +157,6 @@ void	check_map(t_mlx *data, t_map *map);
 
 // raycast //
 
-void	raycast(t_mlx *data, t_ray *ray, t_player *player);
 void	drawang(t_mlx *data);
 
 	//updown
@@ -192,9 +171,12 @@ t_point	dist_left(t_mlx *data, float py, float px, float ang);
 
 // render //
 
-void	render_wall(t_mlx *data, t_player *ply, t_ray *ray, int x);
-void	draw_wall(t_mlx *data, t_ray *ray, int x);
-void 	draw_floor_ceiling(t_mlx *data, t_ray *ray, int x);
+int		convert_rgb(char **rgb);
+int		get_pixel(int c);
+// void	render_wall(t_mlx *data, t_player *ply, t_ray *ray, int x);
+// void	draw_wall(t_mlx *data, t_ray *ray, int x);
+// void 	draw_floor_ceiling(t_mlx *data, t_ray *ray, int x);
+
 
 // utils //
 
@@ -202,8 +184,6 @@ int		isplayer(char c);
 int		is_element(char *line);
 char	*ft_join(char *s1, char *s2);
 void	print_matrix(char **matrix);
-float	normalize_angle(float angle);
-int		unit_circle(float angle, char c);
 
 // errors //
 

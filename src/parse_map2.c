@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 18:21:38 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/15 12:51:20 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/24 12:36:00 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,6 @@ void	check_map(t_mlx *data, t_map *map)
 	{
 		mlx_error(data, "invalid map");
 	}
+	if (map->plyr_x == 0 && map->plyr_y == 0)
+		mlx_error(data, "map needs a player");
 }

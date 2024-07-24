@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 16:57:01 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/19 18:21:33 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/24 16:21:49 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static void	get_mapsize(t_map *map)
 		y++;
 	}
 	map->h_map = y;
-	map->s_map = map->w_map + map->h_map;
 }
 
 void	parse_map(t_mlx *data, t_map *map, char *line, int fd)
