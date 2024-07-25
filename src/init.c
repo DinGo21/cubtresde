@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:25:19 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/24 16:27:56 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/24 17:12:41 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,15 @@ void	init_data(t_mlx *data)
 		mlx_error(data, strerror(errno));
 	data->mlx = NULL;
 	data->img = NULL;
-	data->textures[NO] = NULL;
-	data->textures[SO] = NULL;
-	data->textures[WE] = NULL;
-	data->textures[EA] = NULL;
 	data->map->w_map = 0;
 	data->map->h_map = 0;
 	data->map->plyr_x = 0;
 	data->map->plyr_y = 0;
 	data->map->count = 0;
+	data->textures[NO] = NULL;
+	data->textures[SO] = NULL;
+	data->textures[WE] = NULL;
+	data->textures[EA] = NULL;
 	data->map->map2d = NULL;
 	data->map->cc = NULL;
 	data->map->ff = NULL;

@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:16:04 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/24 16:37:19 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/25 18:06:43 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,11 @@ typedef struct s_player
 	// double	plan_y;
 	double	fov;
 	float	angle;
-	float	x;
-	float	y;
+	int		x;
+	int		y;
 	int		l_r;
 	int		u_d;
+	int		rot;
 }	t_player;
 
 
@@ -171,12 +172,15 @@ t_point	dist_left(t_mlx *data, float py, float px, float ang);
 
 // render //
 
+void	draw3d(t_mlx *data, t_ray *ray, float angle);
+void	draw_background(t_mlx *data, char **cc, char **ff);
 int		convert_rgb(char **rgb);
 int		get_pixel(int c);
-// void	render_wall(t_mlx *data, t_player *ply, t_ray *ray, int x);
-// void	draw_wall(t_mlx *data, t_ray *ray, int x);
-// void 	draw_floor_ceiling(t_mlx *data, t_ray *ray, int x);
 
+// hooks //
+
+void	hooks(t_mlx *data, float move_x, float move_y);
+void	key_hooks(mlx_key_data_t keydata, void *param);
 
 // utils //
 

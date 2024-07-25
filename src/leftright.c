@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 17:28:29 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/24 16:43:01 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/25 19:23:48 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ t_point	dist_right(t_mlx *data, float py, float px, float ang)
 	// }
 	if (end.y <= 0 || end.y > data->map->h_map * TILE_SIZE)
 		return(if_leftright(data, end, ang));
+	// x = end.x / TILE_SIZE;
 	y = end.y / TILE_SIZE;
-	if (data->map->map2d[y][x + 1] != '1')
+	if (x < data->map->w_map && data->map->map2d[y][x + 1] != '1')
 		return (dist_right(data, end.y , end.x, ang));
 	return (end);
 }
@@ -79,7 +80,7 @@ t_point	dist_left(t_mlx *data, float py, float px, float ang)
 		return(if_leftright(data, end, ang));
 	x = end.x / TILE_SIZE;
 	y = end.y / TILE_SIZE;
-	if (data->map->map2d[y][x - 1] != '1')
+	if (x > 0 && data->map->map2d[y][x - 1] != '1')
 		return (dist_left(data, end.y, end.x, ang));
 	return (end);
 }
