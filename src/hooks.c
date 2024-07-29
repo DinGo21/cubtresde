@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:46:49 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/29 14:07:56 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/29 19:59:30 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,22 +101,22 @@ void	hooks(t_mlx *data, float move_x, float move_y)
 		rotate(data, data->player->rot);
 	if (data->player->rot == -1)
 		rotate(data, data->player->rot);
-	if (data->player->l_r == 1)
+	if (data->player->l_r == -1)
 	{
 		move_x = -sin(data->player->angle) * PLAYER_SPEED;
 		move_y = cos(data->player->angle) * PLAYER_SPEED;
 	}
-	if (data->player->l_r == -1)
+	if (data->player->l_r == 1)
 	{
 		move_x = sin(data->player->angle) * PLAYER_SPEED;
 		move_y = -cos(data->player->angle) * PLAYER_SPEED;
 	}
-	if (data->player->u_d == 1)
+	if (data->player->u_d == -1)
 	{
 		move_x = cos(data->player->angle) * PLAYER_SPEED;
 		move_y = sin(data->player->angle) * PLAYER_SPEED;
 	}
-	if (data->player->u_d == -1)
+	if (data->player->u_d == 1)
 	{
 		move_x = -cos(data->player->angle) * PLAYER_SPEED;
 		move_y = -sin(data->player->angle) * PLAYER_SPEED;

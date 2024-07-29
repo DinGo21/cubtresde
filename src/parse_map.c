@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 16:57:01 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/29 14:01:33 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:25:06 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ static void	fill_map(t_mlx *data, t_map *map)
 		{
 			newline = ft_calloc(sizeof(char), map->w_map + 1);
 			if (!newline)
+			{
 				mlx_error(data, strerror(errno));
+			}
 			ft_strlcpy(newline, map->map2d[y], x + 1);
 			ft_memset(newline + x, ' ', map->w_map - x);
 			free(map->map2d[y]);

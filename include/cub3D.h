@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:16:04 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/25 18:06:43 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/29 16:52:36 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,13 +188,15 @@ int		isplayer(char c);
 int		is_element(char *line);
 char	*ft_join(char *s1, char *s2);
 void	print_matrix(char **matrix);
+int		get_txtr_dir(char *line);
+
 
 // errors //
 
 void	ft_error(char *err_message);
 void	mlx_error(t_mlx *data, char *err_mesage);
 
-//trigo
+// trigo //
 float	rads(float x);
 float	catopo(float ady, float ang);
 float	catady(float opo, float ang);

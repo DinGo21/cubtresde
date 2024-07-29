@@ -6,11 +6,24 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:39:56 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/29 14:04:40 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/29 16:58:08 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+int	get_txtr_dir(char *line)
+{
+	if (!ft_strncmp(line, "NO", 2))
+		return (NO);
+	if (!ft_strncmp(line, "SO", 2))
+		return (SO);
+	if (!ft_strncmp(line, "WE", 2))
+		return (WE);
+	if (!ft_strncmp(line, "EA", 2))
+		return (EA);
+	return (0);
+}
 
 void	print_matrix(char **matrix)
 {

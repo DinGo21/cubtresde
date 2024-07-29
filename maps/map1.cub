@@ -1,10 +1,11 @@
+F 20,235,5
+C 5,221,231
+
 NO ./sprites/wall.png
 SO ./sprites/bricks.png
 WE ./sprites/glass.png
 EA ./sprites/gemov1.png
 
-F 20,235,5
-C 5,221,231
 
 1111111111
 1010000001

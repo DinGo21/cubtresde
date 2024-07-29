@@ -1,7 +1,7 @@
-NO ./sprites/wall.png
-SO ./sprites/bricks.png
-WE ./sprites/glass.png
-EA ./sprites/gemov1.png
+NO ./sprites/Impression_Sunrise.png
+SO ./sprites/Mona_Lisa.png
+WE ./sprites/Sunflowers.png
+EA ./sprites/Wheat_Field.png
 
 
 C 225,137,64
