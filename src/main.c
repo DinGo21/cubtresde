@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:04:09 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/25 19:38:18 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/29 13:08:10 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	game_loop(void *param)
 	t_mlx	*data;
 
 	data = param;
-	// hooks(data, 0, 0);
+	hooks(data, 0, 0);
 	drawang(data);
 }
 
@@ -45,12 +45,12 @@ void	start_game(t_mlx *data)
 	init_player(data->player, data->map);
 	if (load_textures(data, data->map) == -1)
 	{
-		mlx_error(data, "Problems while loading textures");
+		mlx_error(data, "incorrect path");
 	}
 	data->img = mlx_new_image(data->mlx, S_WIDTH, S_HEIGHT);
 	mlx_image_to_window(data->mlx, data->img, 0, 0);
 	mlx_loop_hook(data->mlx, &game_loop, data);
-	// mlx_key_hook(data->mlx, &key_hooks, data);
+	mlx_key_hook(data->mlx, &key_hooks, data);
 	mlx_loop(data->mlx);
 }
 

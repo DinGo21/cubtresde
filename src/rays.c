@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 17:23:31 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/25 14:44:00 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/29 14:13:23 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,11 +193,12 @@ void	choose_line(t_mlx *data, t_player *player, float ang)
 	float	h_inter;
 
 	ray.flag = 0;
-	if ((ang >= 0 && ang <= (M_PI / 2)) || (ang > M_PI + (M_PI / 2) && ang < 2 * M_PI))
+	if ((ang >= 0 && ang <= (M_PI / 2)) || (ang > M_PI
+			+ (M_PI / 2) && ang < 2 * M_PI))
 		ray.h = dist_right(data, player->y, player->x, ang);
 	if (ang > (M_PI / 2) && ang <= M_PI + (M_PI / 2))
 		ray.h = dist_left(data, player->y, player->x, ang);
-	if (ang > 0 && ang < M_PI)	
+	if (ang > 0 && ang < M_PI)
 		ray.v = dist_up(data, player->y, player->x, ang);
 	if (ang >= M_PI && ang < 2 * M_PI)
 		ray.v = dist_down(data, player->y, player->x, ang);
@@ -212,7 +213,6 @@ void	choose_line(t_mlx *data, t_player *player, float ang)
 	}
 	draw3d(data, &ray, ang);
 }
-
 
 void	drawang(t_mlx *data)
 {

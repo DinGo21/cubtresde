@@ -6,13 +6,13 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 18:21:38 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/24 12:36:00 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/29 14:03:11 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int check_position(t_map *map, char **map2d, int y, int x)
+static int	check_position(t_map *map, char **map2d, int y, int x)
 {
 	if (isplayer(map2d[y][x]) && map->plyr_x != 0)
 	{
@@ -65,14 +65,12 @@ void	check_map(t_mlx *data, t_map *map)
 {
 	int	y;
 	int	x;
-	
+
 	x = 0;
 	while (map->map2d[0][x] == ' ' || map->map2d[0][x] == '1')
 		x++;
-	if (map->map2d[0][x] != '\0')
-	{
+	if (map->map2d[0][x] != '\0' || map->map2d[1] == NULL)
 		mlx_error(data, "invalid map");
-	}
 	y = 0;
 	while (map->map2d[++y + 1] != NULL)
 	{
@@ -82,9 +80,7 @@ void	check_map(t_mlx *data, t_map *map)
 	while (map->map2d[y][x] == ' ' || map->map2d[y][x] == '1')
 		x++;
 	if (map->map2d[y][x] != '\0')
-	{
 		mlx_error(data, "invalid map");
-	}
 	if (map->plyr_x == 0 && map->plyr_y == 0)
 		mlx_error(data, "map needs a player");
 }

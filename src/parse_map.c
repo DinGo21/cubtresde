@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 16:57:01 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/24 16:21:49 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/29 14:01:33 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	fill_map(t_mlx *data, t_map *map)
 {
-	int y;
-	int	x;
-	char *newline;
+	int		y;
+	int		x;
+	char	*newline;
 
 	y = 0;
 	x = 0;
@@ -43,7 +43,7 @@ static void	get_mapsize(t_map *map)
 	int	x;
 
 	y = 0;
-	while(map->map2d[y] != NULL)
+	while (map->map2d[y] != NULL)
 	{
 		x = 0;
 		while (map->map2d[y][x] != '\0')
@@ -61,7 +61,7 @@ static void	get_mapsize(t_map *map)
 
 void	parse_map(t_mlx *data, t_map *map, char *line, int fd)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = ft_strdup("");
 	while (line)
@@ -77,13 +77,11 @@ void	parse_map(t_mlx *data, t_map *map, char *line, int fd)
 	map->map2d = ft_split(tmp, '\n');
 	free(tmp);
 	if (!map->map2d)
-	{
 		mlx_error(data, strerror(errno));
-	}
+	if (!map->map2d[0])
+		mlx_error(data, "missing the map");
 	get_mapsize(map);
 	fill_map(data, map);
 	print_matrix(map->map2d);
 	check_map(data, map);
 }
-
-

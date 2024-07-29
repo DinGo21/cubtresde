@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:25:19 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/24 17:12:41 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/29 13:56:27 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ int	load_textures(t_mlx *data, t_map *map)
 	printf("%s\n", map->txtr[2]);
 	printf("%s\n", map->txtr[3]);
 	data->textures[NO] = mlx_load_png(map->txtr[NO]);
-	if (!data->textures[NO])
+	if (data->textures[NO] == NULL)
 		return (-1);
 	data->textures[SO] = mlx_load_png(map->txtr[SO]);
-	if (!data->textures[SO])
+	if (data->textures[SO] == NULL)
 		return (-1);
 	data->textures[WE] = mlx_load_png(map->txtr[WE]);
-	if (!data->textures[WE])
+	if (data->textures[WE] == NULL)
 		return (-1);
 	data->textures[EA] = mlx_load_png(map->txtr[EA]);
-	if (!data->textures[EA])
+	if (data->textures[EA] == NULL)
 		return (-1);
 	return (0);
 }
@@ -52,7 +52,6 @@ void	init_player(t_player *player, t_map *map)
 	if (dir == 'W')
 		player->angle = M_PI;
 }
-
 
 void	init_data(t_mlx *data)
 {

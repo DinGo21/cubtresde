@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:09:58 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/24 12:43:27 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/29 13:56:17 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	free_matrix(char **matrix)
 {
 	int	i;
-	
+
 	if (matrix != NULL)
 	{
 		i = 0;

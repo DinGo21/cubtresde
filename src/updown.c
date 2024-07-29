@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 17:29:28 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/25 19:14:03 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/29 14:22:01 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,26 +47,26 @@ t_point	dist_up(t_mlx *data, float py, float px, float ang)
 	x = end.x / TILE_SIZE;
 	y = end.y / TILE_SIZE;
 	end.dir = 'U';
-/* 	if (data->map[y][x] == '1')
-		puts("es 1"); */
 	if (end.x <= 0 || x >= data->map->w_map - 1)
 		return (if_updown(data, end, x, ang));
+	if (y > 0 && data->map->map2d[y - 1][x] != '1')
+		return (dist_up(data, end.y, end.x, ang));
+	return (end);
+}
+/* 	if (data->map[y][x] == '1')
+		puts("es 1"); */
 	// if ((int)(end.x) % TILE_SIZE == 0 && (int)end.y % TILE_SIZE == 0 && ang > (M_PI / 2))
 	// {
 	// 	if (data->map->map2d[y - 1][x - 1] == '1' && data->map->map2d[y][x - 1] != '1')
 	// 		return (end);
 	// }
-	if (y > 0 && data->map->map2d[y - 1][x] != '1')
-		return (dist_up(data, end.y , end.x, ang));
-	return (end);
-}
 
 t_point	dist_down(t_mlx *data, float py, float px, float ang)
 {
 	int		x;
 	int		y;
 	int		auxy;
-	t_point end;
+	t_point	end;
 
 	end.h = 0;
 	x = px / TILE_SIZE;
@@ -81,12 +81,13 @@ t_point	dist_down(t_mlx *data, float py, float px, float ang)
 	end.dir = 'D';
 	if (end.x <= 0 || x >= data->map->w_map - 1)
 		return (if_updown(data, end, x, ang));
-	if ((int)(end.x) % TILE_SIZE == 0 && (int)end.y % TILE_SIZE == 0 && ang > (M_PI / 2))
-	{
-		if (data->map->map2d[y][x] == '1')
-			return (end);
-	}
 	if (y < data->map->h_map && data->map->map2d[y][x] != '1')
-		return (dist_down(data, end.y , end.x, ang));
+		return (dist_down(data, end.y, end.x, ang));
 	return (end);
 }
+
+	// if ((int)(end.x) % TILE_SIZE == 0 && (int)end.y % TILE_SIZE == 0 && ang > (M_PI / 2))
+	// {
+	// 	if (data->map->map2d[y][x] == '1')
+	// 		return (end);
+	// }

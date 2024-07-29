@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:07:53 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/18 11:36:59 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/29 13:59:13 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	check_rgb(t_mlx *data, char **rgb)
 	while (rgb[i] != NULL)
 	{
 		j = 0;
-		while(rgb[i][j] != '\0' && rgb[i][j] != '\n')
+		while (rgb[i][j] != '\0' && rgb[i][j] != '\n')
 		{
 			if (!ft_isdigit(rgb[i][j]))
 				mlx_error(data, "rgb must contain numbers");
@@ -34,14 +34,13 @@ static void	check_rgb(t_mlx *data, char **rgb)
 	rgb[2][3] = '\0';
 }
 
-
 static int	get_rgb(t_map *map, char *line)
 {
 	int	i;
 
 	i = 1;
 	while (line[i] == '\t' || line[i] == ' ')
-			i++;
+		i++;
 	if (line[i] == '\n' || line[i] == '\0')
 		return (ft_error("missing element"), -1);
 	if (!ft_strncmp(line, "F", 1))
@@ -86,7 +85,7 @@ static int	get_texture(t_map *map, char *line)
 		return (ft_error("element already set"), -1);
 	map->txtr[in] = ft_strdup(line + i);
 	if (ft_strncmp(ft_strrchr(map->txtr[in], '.'), ".png", 4) != 0)
-		return(ft_error("wrong filetype"), -1);
+		return (ft_error("wrong filetype"), -1);
 	*(ft_strrchr(map->txtr[in], '\n')) = '\0';
 	map->count++;
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:39:56 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/24 16:31:30 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/29 14:04:40 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_matrix(char **matrix)
 int	is_element(char *line)
 {
 	if (!ft_strncmp(line, "NO", 2) || !ft_strncmp(line, "SO", 2)
-			|| !ft_strncmp(line, "WE", 2) || !ft_strncmp(line, "EA", 2))
+		|| !ft_strncmp(line, "WE", 2) || !ft_strncmp(line, "EA", 2))
 	{
 		return (1);
 	}
@@ -73,4 +73,3 @@ char	*ft_join(char *s1, char *s2)
 	str[c1 + c2] = '\0';
 	return (free(s1), str);
 }
-
