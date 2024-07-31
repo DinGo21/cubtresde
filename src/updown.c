@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   updown.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 17:29:28 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/29 14:22:01 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/31 01:44:22 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ t_point	if_updown(t_mlx *data, t_point end, int x, float ang)
 		end.y = data->player->y + catopo(data->player->x, ang);
 		return (end);
 	}
-	if (x >= data->map->w_map - 1)
+	if (x > data->map->w_map)
 	{
-		end.x = data->map->w_map * TILE_SIZE - TILE_SIZE;
+		end.x = data->map->w_map * TILE_SIZE;
 		end.y = data->player->y - catopo(end.x - data->player->x, ang);
 		return (end);
 	}
@@ -47,7 +47,7 @@ t_point	dist_up(t_mlx *data, float py, float px, float ang)
 	x = end.x / TILE_SIZE;
 	y = end.y / TILE_SIZE;
 	end.dir = 'U';
-	if (end.x <= 0 || x >= data->map->w_map - 1)
+	if (end.x <= 0 || x > data->map->w_map)
 		return (if_updown(data, end, x, ang));
 	if (y > 0 && data->map->map2d[y - 1][x] != '1')
 		return (dist_up(data, end.y, end.x, ang));

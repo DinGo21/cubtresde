@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:04:09 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/29 13:08:10 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/31 02:53:10 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	game_loop(void *param)
 	t_mlx	*data;
 
 	data = param;
-	hooks(data, 0, 0);
+	hooks(data);
 	drawang(data);
 }
 

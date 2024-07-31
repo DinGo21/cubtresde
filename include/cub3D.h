@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:16:04 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/29 16:52:36 by disantam         ###   ########.fr       */
+/*   Updated: 2024/07/31 02:52:22 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define M_PI 3.14159265358979323846
-# define S_WIDTH 1920 // Screen width
-# define S_HEIGHT 1080 // Screen height
+# define S_WIDTH 800 // Screen width
+# define S_HEIGHT 600 // Screen height
 # define TILE_SIZE 64 // Tile size
 # define FOV 60
 # define ROTATION_SPEED 0.045 // Rotation speed
@@ -63,8 +63,8 @@ typedef struct s_player
 	// double	plan_y;
 	double	fov;
 	float	angle;
-	int		x;
-	int		y;
+	float		x;
+	float		y;
 	int		l_r;
 	int		u_d;
 	int		rot;
@@ -179,7 +179,7 @@ int		get_pixel(int c);
 
 // hooks //
 
-void	hooks(t_mlx *data, float move_x, float move_y);
+void	hooks(t_mlx *data);
 void	key_hooks(mlx_key_data_t keydata, void *param);
 
 // utils //
