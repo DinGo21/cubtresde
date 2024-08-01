@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 11:25:19 by disantam          #+#    #+#             */
-/*   Updated: 2024/08/01 04:31:48 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/08/01 04:19:00 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3D_bonus.h"
 
 int	load_textures(t_mlx *data, t_map *map)
 {
@@ -61,6 +61,7 @@ void	init_data(t_mlx *data)
 		mlx_error(data, strerror(errno));
 	data->mlx = NULL;
 	data->img = NULL;
+	data->mini = NULL;
 	data->map->w_map = 0;
 	data->map->h_map = 0;
 	data->map->plyr_x = 0;
