@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:16:04 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/31 02:52:22 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:39:03 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@
 # define WE 2 // West orientation
 # define EA 3 // East orientation
 
-#define CBLU 0x6cffebFF
-#define CGRN 0xa413daFF
-#define CRED 0xFF0000FF
-#define CWHI 0xFFFFFFFF
-#define CCIA 0x3498dbff
-#define	CBLK 0x000000ff
+# define CBLU 0x6cffebFF
+# define CGRN 0xa413daFF
+# define CRED 0xFF0000FF
+# define CWHI 0xFFFFFFFF
+# define CCIA 0x3498dbff
+# define CBLK 0x000000ff
 
 /**
  * The player structure.
@@ -63,15 +63,14 @@ typedef struct s_player
 	// double	plan_y;
 	double	fov;
 	float	angle;
-	float		x;
-	float		y;
+	float	x;
+	float	y;
 	int		l_r;
 	int		u_d;
 	int		rot;
 }	t_player;
 
-
-typedef	struct	s_point
+typedef struct s_point
 {
 	float	x;
 	float	y;
@@ -160,12 +159,14 @@ void	check_map(t_mlx *data, t_map *map);
 
 void	drawang(t_mlx *data);
 
-	//updown
+// updown //
+
 t_point	if_updown(t_mlx *data, t_point end, int x, float ang);
 t_point	dist_up(t_mlx *data, float py, float px, float ang);
 t_point	dist_down(t_mlx *data, float py, float px, float ang);
 
-	//leftright
+// leftright //
+
 t_point	if_leftright(t_mlx *data, t_point end, float ang);
 t_point	dist_right(t_mlx *data, float py, float px, float ang);
 t_point	dist_left(t_mlx *data, float py, float px, float ang);
@@ -177,10 +178,13 @@ void	draw_background(t_mlx *data, char **cc, char **ff);
 int		convert_rgb(char **rgb);
 int		get_pixel(int c);
 
+// keys //
+
+void	key_hooks(mlx_key_data_t keydata, void *param);
+
 // hooks //
 
 void	hooks(t_mlx *data);
-void	key_hooks(mlx_key_data_t keydata, void *param);
 
 // utils //
 
@@ -189,7 +193,6 @@ int		is_element(char *line);
 char	*ft_join(char *s1, char *s2);
 void	print_matrix(char **matrix);
 int		get_txtr_dir(char *line);
-
 
 // errors //
 
@@ -205,7 +208,7 @@ float	hipo(float y, float x);
 // frees //
 
 void	free_matrix(char **matrix);
-void    free_map(t_map *map);
+void	free_map(t_map *map);
 void	free_mlx(t_mlx *data);
 
 #endif

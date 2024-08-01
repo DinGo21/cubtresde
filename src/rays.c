@@ -3,50 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 17:23:31 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/31 02:47:57 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/08/01 11:26:13 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	draw(t_mlx *data, t_point end, t_player *begin, int color)
-{
-	float	delta_x;
-	float	delta_y;
-	float	pixel_x;
-	float	pixel_y;
-	int		pixels;
+// void	draw(t_mlx *data, t_point end, t_player *begin, int color)
+// {
+// 	float	delta_x;
+// 	float	delta_y;
+// 	float	pixel_x;
+// 	float	pixel_y;
+// 	int		pixels;
 
-	delta_x = end.x - begin->x;
-	delta_y = end.y - begin->y;
-	pixels = sqrt((delta_x * delta_x) + (delta_y * delta_y));
-	delta_x = delta_x / pixels;
-	delta_y = delta_y / pixels;
-	pixel_x = begin->x;
-	pixel_y = begin->y;
-	while (pixels > 0)
-	{
-		mlx_put_pixel(data->img, pixel_x, pixel_y, color);
-		pixel_x += delta_x;
-		pixel_y += delta_y;
-		pixels--;
-	}
-}
+// 	delta_x = end.x - begin->x;
+// 	delta_y = end.y - begin->y;
+// 	pixels = sqrt((delta_x * delta_x) + (delta_y * delta_y));
+// 	delta_x = delta_x / pixels;
+// 	delta_y = delta_y / pixels;
+// 	pixel_x = begin->x;
+// 	pixel_y = begin->y;
+// 	while (pixels > 0)
+// 	{
+// 		mlx_put_pixel(data->img, pixel_x, pixel_y, color);
+// 		pixel_x += delta_x;
+// 		pixel_y += delta_y;
+// 		pixels--;
+// 	}
+// }
 
-void	drawlines(t_mlx *data, t_point h)
-{
-	if (h.dir == 'U')
-		draw(data, h, data->player, CBLK);
-	if (h.dir == 'D')
-		draw(data, h, data->player, CCIA);
-	if (h.dir == 'R')
-		draw(data, h, data->player, CRED);
-	if (h.dir == 'L')
-		draw(data, h, data->player, CGRN);
-}
+// void	drawlines(t_mlx *data, t_point h)
+// {
+// 	if (h.dir == 'U')
+// 		draw(data, h, data->player, CBLK);
+// 	if (h.dir == 'D')
+// 		draw(data, h, data->player, CCIA);
+// 	if (h.dir == 'R')
+// 		draw(data, h, data->player, CRED);
+// 	if (h.dir == 'L')
+// 		draw(data, h, data->player, CGRN);
+// }
 
 void	choose_line(t_mlx *data, t_player *player, float ang)
 {
@@ -67,15 +67,11 @@ void	choose_line(t_mlx *data, t_player *player, float ang)
 	h_inter = hipo(player->y - ray.h.y, player->x - ray.h.x);
 	v_inter = hipo(player->y - ray.v.y, player->x - ray.v.x);
 	if (v_inter < h_inter)
-	{
 		ray.distance = v_inter;
-		drawlines(data,ray.v);
-	}
 	else
 	{
 		ray.distance = h_inter;
 		ray.flag = 1;
-		drawlines(data,ray.h);
 	}
 	draw3d(data, &ray, ang);
 }

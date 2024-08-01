@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   leftright_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 17:28:29 by disantam          #+#    #+#             */
-/*   Updated: 2024/08/01 01:50:10 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/08/01 11:32:35 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ t_point	dist_right(t_mlx *data, float py, float px, float ang)
 	end.dir = 'R';
 	if (end.y <= 0 || end.y > data->map->h_map * TILE_SIZE)
 		return (if_leftright(data, end, ang));
-	// x = end.x / TILE_SIZE;
 	y = end.y / TILE_SIZE;
 	if (x < data->map->w_map && data->map->map2d[y][x + 1] != '1')
 		return (dist_right(data, end.y, end.x, ang));
 	return (end);
 }
 
+	// x = end.x / TILE_SIZE;
 	// if (ang == 90)
 	// {
 	// 	end.y = 0;

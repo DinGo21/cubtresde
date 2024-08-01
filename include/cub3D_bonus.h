@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:16:04 by disantam          #+#    #+#             */
-/*   Updated: 2024/08/01 05:48:11 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/08/01 13:08:09 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define M_PI 3.14159265358979323846
-# define S_WIDTH 800 // Screen width
-# define S_HEIGHT 600 // Screen height
+# define S_WIDTH 1000 // Screen width
+# define S_HEIGHT 800 // Screen height
 # define TILE_SIZE 64 // Tile size
 # define FOV 60
 # define ROTATION_SPEED 0.045 // Rotation speed
-# define PLAYER_SPEED 4 // Player speed
+# define PLAYER_SPEED 0.80 // Player speed
 
 # define NO 0 // North orientation
 # define SO 1 // South orientation

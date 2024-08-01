@@ -6,7 +6,7 @@
 /*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:07:53 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/29 17:24:39 by disantam         ###   ########.fr       */
+/*   Updated: 2024/08/01 15:04:31 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,11 @@ static int	get_texture(t_map *map, char *line)
 		return (ft_error("element already set"), -1);
 	map->txtr[dir] = ft_strdup(line + i);
 	if (ft_strncmp(ft_strrchr(map->txtr[dir], '.'), ".png", 4) != 0)
-	{
 		return (ft_error("wrong filetype"), -1);
-	}
 	*(ft_strrchr(map->txtr[dir], '\n')) = '\0';
 	fd = open(map->txtr[dir], O_RDONLY);
 	if (fd < 0)
-		return (ft_error("incorrect path"), -1);
+		return (ft_error(strerror(errno)), -1);
 	map->count++;
 	close(fd);
 	return (0);
@@ -104,6 +102,8 @@ static int	check_element(t_map *map, char *line)
 		i++;
 	if (line[i] == '\n')
 		return (free(line), 0);
+	else if (ft_strchr("10", line[i]))
+		return (ft_error("file misconfiguration"), free(line), -1);
 	else if (line[i] == '\0')
 		return (ft_error("unexpected EOF"), free(line), -1);
 	if (is_element(line + i) == 1)
@@ -117,9 +117,7 @@ static int	check_element(t_map *map, char *line)
 			return (free(line), -1);
 	}
 	else
-	{
-		return (ft_error("unknown parameter"), free(line), -1);
-	}
+		return (ft_error("unknown element"), free(line), -1);
 	return (free(line), 0);
 }
 

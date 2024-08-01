@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   updown.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 17:29:28 by disantam          #+#    #+#             */
-/*   Updated: 2024/07/31 01:44:22 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:02:22 by disantam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,6 @@ t_point	dist_up(t_mlx *data, float py, float px, float ang)
 		return (dist_up(data, end.y, end.x, ang));
 	return (end);
 }
-/* 	if (data->map[y][x] == '1')
-		puts("es 1"); */
-	// if ((int)(end.x) % TILE_SIZE == 0 && (int)end.y % TILE_SIZE == 0 && ang > (M_PI / 2))
-	// {
-	// 	if (data->map->map2d[y - 1][x - 1] == '1' && data->map->map2d[y][x - 1] != '1')
-	// 		return (end);
-	// }
 
 t_point	dist_down(t_mlx *data, float py, float px, float ang)
 {
@@ -85,9 +78,3 @@ t_point	dist_down(t_mlx *data, float py, float px, float ang)
 		return (dist_down(data, end.y, end.x, ang));
 	return (end);
 }
-
-	// if ((int)(end.x) % TILE_SIZE == 0 && (int)end.y % TILE_SIZE == 0 && ang > (M_PI / 2))
-	// {
-	// 	if (data->map->map2d[y][x] == '1')
-	// 		return (end);
-	// }

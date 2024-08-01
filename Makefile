@@ -13,16 +13,16 @@ MLX_DIR = MLX42/build/
 OBJ_DIR = obj/
 
 SRC_FILES = $(notdir $(wildcard $(SRC_DIR)*.c))
-#BONUS_FILES = $(notdir $(wildcard $(BONUS_DIR)*.c))
+# BONUS_FILES = $(notdir $(wildcard $(BONUS_DIR)*.c))
 OBJ_FILES = $(SRC_FILES:.c=.o)
-#OBJ_FILES_BONUS = $(BONUS_FILES:.c=.o)
+# OBJ_FILES_BONUS = $(BONUS_FILES:.c=.o)
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
-#SRC_BONUS = $(addprefix $(BONUS_DIR), $(BONUS_FILES))
+SRC_BONUS = $(addprefix $(BONUS_DIR), $(BONUS_FILES))
 LIBFT = $(addprefix $(LIBFT_DIR), libft.a)
 MLX = $(addprefix $(MLX_DIR), libmlx42.a)
 OBJ = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
-#OBJ = $(addprefix $(OBJ_DIR), $(OBJ_FILES_BONUS))
+# OBJ = $(addprefix $(OBJ_DIR), $(OBJ_FILES_BONUS))
 
 INCLUDES = -I include/
 LIBS := -ldl -lglfw -pthread -lm
