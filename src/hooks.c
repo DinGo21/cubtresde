@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: disantam <disantam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:46:49 by disantam          #+#    #+#             */
-/*   Updated: 2024/08/01 15:36:24 by disantam         ###   ########.fr       */
+/*   Updated: 2024/08/01 16:44:03 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	coll(t_mlx *data, float ang, int ctr)
 {
 	int	dist;
 
-	dist = 10;
+	dist = 20;
 	if ((data->map->map2d[(int)(data->player->y / TILE_SIZE)]
 		[((int)data->player->x + dist) / TILE_SIZE] == '1')
 		&& (ang <= M_PI / 2 || ang >= M_PI + (M_PI / 2)) && ctr == 1)
@@ -81,13 +81,13 @@ void	move(t_point end, t_player *player, t_mlx *data, float ang)
 	float	delta_x;
 	float	delta_y;
 	int		pixels;
-	int		spd;
+	float		spd;
 
 	if (player->u_d == 1 && (player->l_r == 1 || player->l_r == -1))
-		spd = PLAYER_SPEED / 2;
+		spd = PLAYER_SPEED / 1.5;
 	else if (player->u_d == -1 && (player->l_r == 1
 			|| player->l_r == -1))
-		spd = PLAYER_SPEED / 2;
+		spd = PLAYER_SPEED / 1.5;
 	else
 		spd = PLAYER_SPEED;
 	delta_x = end.x - player->x;
