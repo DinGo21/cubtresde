@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:16:04 by disantam          #+#    #+#             */
-/*   Updated: 2024/08/01 16:47:32 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/08/01 16:52:33 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define M_PI 3.14159265358979323846
-# define S_WIDTH 1900 // Screen width
+# define S_WIDTH 1920 // Screen width
 # define S_HEIGHT 1080 // Screen height
 # define TILE_SIZE 64 // Tile size
 # define FOV 60
